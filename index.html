@@ -14,8 +14,9 @@
             --primary-color: #e74c3c; /* Qizil */
             --secondary-color: #2c3e50; /* Qora-ko'k */
             --light-color: #ffffff; /* Oq */
-            --grey-color: #f0f2f5; /* Body foni (sizning kodingizdan) */
+            --grey-color: #f0f2f5; /* Body foni */
             --dark-color: #333333;
+            --success-color: #28a745; /* Yashil (sotib olish) */
         }
 
         * {
@@ -28,7 +29,6 @@
             font-family: 'Roboto', sans-serif;
             background-color: var(--grey-color);
             color: var(--dark-color);
-            /* O'ng tomondagi padding olib tashlandi, chunki savatcha endi yashirin */
         }
 
         .container {
@@ -50,20 +50,8 @@
             place-items: center;
             transition: opacity 0.5s ease;
         }
-
-        #preloader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .animation-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            display: grid;
-            place-items: center;
-        }
-
+        #preloader.hidden { opacity: 0; pointer-events: none; }
+        .animation-container { position: relative; width: 200px; height: 200px; display: grid; place-items: center; }
         .preloader-logo {
             width: 100px;
             height: 100px;
@@ -73,13 +61,11 @@
             animation: splashLogo 2s ease-out 2.5s forwards;
             box-shadow: 0 0 30px var(--primary-color);
         }
-
         @keyframes splashLogo {
             0% { opacity: 0; transform: scale(0.5) rotate(-180deg); }
             50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
             100% { opacity: 1; transform: scale(1) rotate(0deg); }
         }
-
         .line {
             position: absolute;
             width: 5px;
@@ -116,64 +102,40 @@
             top: 0;
             z-index: 100;
         }
-
-        .main-logo {
-            height: 50px;
-        }
-        
-        /* Headerdagi qidiruv va savatcha ikonasi */
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .search-section {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        .main-logo { height: 50px; }
+        .header-controls { display: flex; align-items: center; gap: 25px; /* Joy ko'paytirildi */ }
+        .search-section { display: flex; gap: 10px; align-items: center; }
         .search-bar { position: relative; }
         .search-bar input[type="text"] {
             padding: 10px 15px;
             padding-right: 40px;
             border: 1px solid #ddd;
             border-radius: 20px;
-            width: 300px;
+            width: 250px; /* Kichraytirildi */
             font-size: 1rem;
         }
-        .search-bar i {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-        }
-        .filters { display: flex; gap: 15px; align-items: center; }
+        .search-bar i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #999; }
         .filters input[type="number"] {
-            padding: 8px 10px;
+            padding: 10px 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            width: 150px;
+            width: 130px; /* Kichraytirildi */
         }
-        .filters label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
-
-        /* SAVATCHA OCHISH TUGMASI (IKONKA) */
-        #cart-toggle-btn {
+        
+        /* SAVATCHA VA JARAYONDA TUGMALARI */
+        #cart-toggle-btn, #progress-toggle-btn {
             font-size: 1.8rem;
             color: var(--secondary-color);
             cursor: pointer;
             transition: color 0.3s ease;
         }
-        #cart-toggle-btn:hover { color: var(--primary-color); }
+        #cart-toggle-btn:hover, #progress-toggle-btn:hover { color: var(--primary-color); }
 
-        /* =================================
-           YANGI SLIDER STILLARI (SIZNING KODINGIZDAN)
-           ================================= */
+        /* SLIDER STILLARI */
         .slider-container {
             width: 90%; 
             max-width: 1200px; 
-            margin: 20px auto 40px auto; /* Headerdan keyin joy */
+            margin: 20px auto 40px auto; 
             overflow: hidden; 
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -184,16 +146,8 @@
             display: flex;
             animation: slide 15s infinite ease-in-out; 
         }
-        .slide {
-            width: 33.333%; 
-            flex-shrink: 0;
-        }
-        .slide img {
-            width: 100%;
-            height: 350px; 
-            object-fit: cover; 
-            display: block;
-        }
+        .slide { width: 33.333%; flex-shrink: 0; }
+        .slide img { width: 100%; height: 350px; object-fit: cover; display: block; }
         @keyframes slide {
             0% { transform: translateX(0%); } 
             30% { transform: translateX(0%); }
@@ -203,21 +157,18 @@
             97% { transform: translateX(-66.666%); }
             100% { transform: translateX(0%); }
         }
-        .slider-container:hover .slider-wrapper {
-            animation-play-state: paused;
-        }
+        .slider-container:hover .slider-wrapper { animation-play-state: paused; }
 
         /* 3. MAHSULOTLAR PANJARASI */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px; /* Sizning kodingizdagi kabi */
+            gap: 30px;
             padding-bottom: 50px;
         }
-
         .product-card {
             background: var(--light-color);
-            width: 100%; /* Avtomatik moslashish uchun 300px o'rniga */
+            width: 100%; 
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -225,59 +176,17 @@
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        .product-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        .product-info {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .product-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-        }
-        .product-description {
-            font-size: 0.9rem;
-            color: #777;
-            margin: 10px 0 15px 0;
-            flex-grow: 1;
-            min-height: 40px; /* Kichraytirildi */
-        }
-        .price-container {
-            margin-bottom: 15px;
-        }
-        .product-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #007bff; /* Sizning narx rangingiz */
-        }
-        .product-installment {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #444;
-            background: #f0f0f0;
-            padding: 3px 8px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 5px;
-        }
-
-        /* Savatga qo'shish tugmasi */
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
+        .product-image { width: 100%; height: 220px; object-fit: cover; }
+        .product-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; color: #1a1a1a; }
+        .product-description { font-size: 0.9rem; color: #777; margin: 10px 0 15px 0; flex-grow: 1; min-height: 40px; }
+        .product-price { font-size: 1.5rem; font-weight: 700; color: #007bff; margin-bottom: 15px; }
         .add-to-cart-btn {
             width: 100%;
             padding: 14px 20px;
             margin-top: 15px;
-            background-color: #28a745; /* Sizning rangingiz */
+            background-color: var(--success-color);
             color: var(--light-color);
             border: none;
             border-radius: 8px;
@@ -290,14 +199,8 @@
             justify-content: center;
             gap: 10px;
         }
-        .add-to-cart-btn:hover {
-            background-color: #218838;
-            transform: scale(1.03);
-        }
-         .add-to-cart-btn:active {
-             transform: scale(0.98);
-         }
-
+        .add-to-cart-btn:hover { background-color: #218838; transform: scale(1.03); }
+        .add-to-cart-btn:active { transform: scale(0.98); }
 
         /* 4. KORZINA (OCHILADIGAN) */
         .cart-container {
@@ -308,21 +211,13 @@
             height: 100vh;
             background: var(--light-color);
             box-shadow: -5px 0 20px rgba(0,0,0,0.1);
-            z-index: 1001; /* Headerdan yuqorida */
+            z-index: 1001; 
             display: flex;
             flex-direction: column;
-            
-            /* Yashirish stillari */
             transform: translateX(100%);
             transition: transform 0.4s ease-in-out;
         }
-        
-        /* Savatchani ochish (JS orqali qo'shiladi) */
-        .cart-container.open {
-            transform: translateX(0);
-        }
-
-        /* Savatcha boshi (Sarlavha va yopish tugmasi) */
+        .cart-container.open { transform: translateX(0); }
         .cart-header {
             display: flex;
             justify-content: space-between;
@@ -330,24 +225,9 @@
             padding: 20px;
             border-bottom: 2px solid var(--grey-color);
         }
-        .cart-header h2 {
-            color: var(--secondary-color);
-            margin: 0;
-        }
-        #cart-close-btn {
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: #888;
-            cursor: pointer;
-            line-height: 1;
-        }
-
-        .cart-items {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 10px 20px;
-        }
-
+        .cart-header h2 { color: var(--secondary-color); margin: 0; }
+        #cart-close-btn { font-size: 2.5rem; font-weight: 300; color: #888; cursor: pointer; line-height: 1; }
+        .cart-items { flex-grow: 1; overflow-y: auto; padding: 10px 20px; }
         .cart-item {
             display: flex;
             align-items: center;
@@ -355,13 +235,7 @@
             padding-bottom: 15px;
             border-bottom: 1px solid var(--grey-color);
         }
-        .cart-item-img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-right: 15px;
-        }
+        .cart-item-img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; margin-right: 15px; }
         .cart-item-info { flex-grow: 1; }
         .cart-item-name { font-weight: 600; }
         .cart-item-price { color: var(--primary-color); font-size: 0.9rem; }
@@ -377,11 +251,11 @@
         }
         .cart-item-controls .remove-btn { background: #fde8e8; color: var(--primary-color); }
 
-        /* Jami qismi */
+        /* Jami qismi (Nasiya olib tashlandi) */
         .cart-footer {
             border-top: 2px solid var(--grey-color);
             padding: 20px;
-            margin-top: auto; /* Pastga yopishtirish */
+            margin-top: auto; 
         }
         .total-line {
             display: flex;
@@ -391,8 +265,7 @@
         }
         .total-line strong { color: var(--dark-color); }
         .total-line span { font-weight: 700; color: var(--secondary-color); }
-        .total-line.installment span { color: var(--primary-color); }
-
+        
         .cart-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
         .cart-buttons button {
             padding: 15px;
@@ -408,11 +281,9 @@
             gap: 10px;
         }
         .btn-buy-now { background: var(--secondary-color); color: var(--light-color); }
-        .btn-buy-installment { background: var(--primary-color); color: var(--light-color); }
         .btn-buy-now:hover { background: #34495e; }
-        .btn-buy-installment:hover { background: #c0392b; }
 
-        /* 5. MODAL OYNA (FRAME) */
+        /* 5. MODAL OYNA (UMUMIY) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -424,11 +295,13 @@
             display: none; 
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
         .modal-content {
             background: var(--light-color);
-            width: 80%;
-            height: 80%;
+            width: 100%;
+            max-width: 500px; /* To'lov oynasi uchun optimal o'lcham */
+            max-height: 90vh;
             border-radius: 10px;
             overflow: hidden;
             display: flex;
@@ -450,11 +323,200 @@
             cursor: pointer;
             color: #888;
         }
-        #payment-frame { width: 100%; height: 100%; border: none; }
+
+        /* 5.1. TO'LOV OYNASI BOSQICHLARI UCHUN STIL */
+        #payment-steps-container {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        #payment-steps-container h4 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        .payment-info {
+            background: var(--grey-color);
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+        .payment-info strong {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-top: 10px;
+            letter-spacing: 1px;
+            user-select: all; /* Karta raqamini nusxalash oson bo'lishi uchun */
+        }
+        .payment-info .total-payment {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Input maydonlari uchun stil */
+        .payment-input {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .payment-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 5px rgba(44, 62, 80, 0.2);
+        }
+
+        /* Chek yuklash maydoni */
+        #receipt-upload {
+            font-size: 1rem;
+            border: 2px dashed #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #receipt-upload::file-selector-button {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        /* Modal ichidagi tugmalar */
+        .btn-modal {
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--success-color);
+            color: var(--light-color);
+        }
+        .btn-modal:hover { background: #218838; }
+        .btn-modal:disabled { background: #aaa; cursor: not-allowed; }
+
+        /* 5.2. TASDIQLASH ANIMATSIYASI */
+        .success-animation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 40px 20px;
+        }
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 3;
+            stroke: var(--success-color);
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px var(--success-color);
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 3;
+            stroke-miterlimit: 10;
+            stroke: var(--success-color);
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes scale {
+            0%, 100% { transform: none; }
+            50% { transform: scale3d(1.1, 1.1, 1); }
+        }
+        @keyframes fill {
+            100% { box-shadow: inset 0px 0px 0px 40px var(--success-color); }
+        }
+        .success-animation p {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            text-align: center;
+        }
+
+        /* 5.3. "JARAYONDA" MODAL OYNASI */
+        #progress-content {
+            padding: 20px 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .progress-header {
+            background: var(--grey-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .progress-header strong {
+            color: var(--secondary-color);
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .progress-header a {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .progress-order {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .progress-order-header {
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .progress-order-header .status {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .progress-order-item {
+            display: flex;
+            gap: 15px;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+        .progress-order-item span { color: #555; }
+        .progress-order-total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: right;
+            padding: 15px;
+            border-top: 1px solid #eee;
+            background: #fdfdfd;
+        }
 
         /* Musiqani yashirish */
         #background-music { display: none; }
-
     </style>
 </head>
 <body>
@@ -483,14 +545,12 @@
                 </div>
                 <div class="filters">
                     <input type="number" id="price-filter" placeholder="Narx Qidiruvi🔍">
-                    <label for="installment-filter">
-                        <input type="checkbox" id="installment-filter">
-                        Faqat nasiyaga
-                    </label>
-                </div>
+                    </div>
             </div>
             
-            <i class="fas fa-shopping-cart" id="cart-toggle-btn"></i>
+            <i class="fas fa-tasks" id="progress-toggle-btn" title="Jarayondagi buyurtmalar"></i>
+            
+            <i class="fas fa-shopping-cart" id="cart-toggle-btn" title="Savatcha"></i>
         </div>
     </header>
 
@@ -513,35 +573,24 @@
     </main>
 
     <div id="cart" class="cart-container">
-        
         <div class="cart-header">
             <h2><i class="fas fa-shopping-cart"></i> Savatcha</h2>
             <span id="cart-close-btn">&times;</span>
         </div>
-        
         <div id="cart-items" class="cart-items">
             </div>
-        
         <div class="cart-footer">
             <div class="cart-totals">
                 <div class="total-line">
                     <strong>Umumiy Narx:</strong>
                     <span id="total-price">0 so'm</span>
                 </div>
-                <div class="total-line installment">
-                    <strong>Umumiy Nasiya:</strong>
-                    <span id="total-installment-price">0 so'm / oy</span>
                 </div>
-            </div>
-            
             <div class="cart-buttons">
-                <button class="btn-buy-now" onclick="openPaymentLink('https://example.com/oddiy-tolov-sahifasi', 'Oddiy To\'lov')">
+                <button class="btn-buy-now" onclick="openPaymentModal()">
                     <i class="fas fa-credit-card"></i> Hozir Sotib Olish
                 </button>
-                <button class="btn-buy-installment" onclick="openPaymentLink('https://example.com/nasiya-tolov-sahifasi', 'Nasiyaga To\'lov')">
-                    <i class="fas fa-calendar-alt"></i> Nasiyaga Olish
-                </button>
-            </div>
+                </div>
         </div>
     </div>
 
@@ -549,32 +598,41 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="modal-title">To'lov Sahifasi</h3>
-                <button class="close-modal" onclick="closePaymentLink()">&times;</button>
+                <button class="close-modal" onclick="closePaymentModal()">&times;</button>
             </div>
-            <iframe id="payment-frame" src="" frameborder="0"></iframe>
+            <div id="payment-steps-container">
+                </div>
         </div>
     </div>
+
+    <div id="progress-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-tasks"></i> Jarayondagi Buyurtmalar</h3>
+                <button class="close-modal" id="progress-close-btn">&times;</button>
+            </div>
+            <div id="progress-content">
+                </div>
+        </div>
+    </div>
+
 
     <script>
         // JAVASCRIPT KODI SHU YERDA BOSHLANADI
 
-        // Narx formatlash funksiyalari
+        // Narx formatlash funksiyasi
         const formatPrice = (price) => {
             return new Intl.NumberFormat('uz-UZ').format(price) + " so'm";
         };
-        const formatInstallment = (price) => {
-            return new Intl.NumberFormat('uz-UZ').format(price) + " so'm / oy";
-        };
 
         // 1. DASTLABKI MA'LUMOTLAR (MAHSULOTLAR)
-        // Sizning kodingizdagi mahsulotlarga moslashtirildi, lekin narxlar qo'shildi
+        // installmentPrice olib tashlandi
         const allProducts = [
             {
                 id: 1,
                 name: "Quyosh qurti",
                 description: "Sultonov brendi tabiiy mahsuloti.",
                 price: 20000,
-                installmentPrice: 50000, 
                 image: "https://www.dropbox.com/scl/fi/za9k5451cxd34xn9dxrry/01.12.2023.jpg?rlkey=eh7e87sw432gk1qnnyvmbcoqq&st=gv3kd2c6&raw=1"
             },
             {
@@ -582,7 +640,6 @@
                 name: "SULTANOV SHOP",
                 description: "YouTube SultanovTV maxsulotlari.",
                 price: 500000,
-                installmentPrice: 75000,
                 image: "https://www.dropbox.com/scl/fi/9e2yj2xjivoi55wcu4mcw/file_000000008d8071f4b0f063d2e7ed5865.png?rlkey=6xku0zl8q68alilu1uch66mg5&st=u6ccxczb&dl=1"
             },
             {
@@ -590,7 +647,6 @@
                 name: "Sizni mahsulotingiz",
                 description: "Sizni mahsulotingiz.",
                 price: 120000,
-                installmentPrice: 20000,
                 image: "https://www.dropbox.com/scl/fi/xg1afgk3q8j58b6srtrge/IMG_20251114_150508_785.jpg?rlkey=y5sd86dngjmmqngi2dkk1c6jc&st=ew4reqgz&dl=1"
             },
             {
@@ -598,31 +654,39 @@
                 name: "Oyash Parfume",
                 description: "Original va hamyonbop atirlar to'plami.",
                 price: 350000,
-                installmentPrice: 50000,
                 image: "https://www.dropbox.com/scl/fi/yi6dh1qkcm1vq5gun63j8/IMG_20251114_151401_745.jpg?rlkey=m9ayj8ebmq5bryh0n4j81a8wy&st=so01lwjq&dl=1"
             }
         ];
 
         // 2. GLOBAL O'ZGARUVCHILAR VA DOM ELEMENTLARI
         let cart = [];
+        let currentOrderTotalPrice = 0; // Joriy buyurtma summasini saqlash uchun
+        let currentOrderPhone = ''; // Joriy telefon raqamini saqlash uchun
+
         const productGrid = document.getElementById('product-grid');
         const cartItemsContainer = document.getElementById('cart-items');
         const totalPriceEl = document.getElementById('total-price');
-        const totalInstallmentEl = document.getElementById('total-installment-price');
         const preloader = document.getElementById('preloader');
         const searchInput = document.getElementById('search-input');
         const priceFilterInput = document.getElementById('price-filter');
-        const installmentFilterCheckbox = document.getElementById('installment-filter');
+        // Nasiya filtri o'zgaruvchisi olib tashlandi
         
         // Modal oyna elementlari
-        const modal = document.getElementById('payment-modal');
-        const modalFrame = document.getElementById('payment-frame');
+        const paymentModal = document.getElementById('payment-modal');
         const modalTitle = document.getElementById('modal-title');
+        const paymentStepsContainer = document.getElementById('payment-steps-container');
 
-        // YANGI: Savatchani ochish/yopish elementlari
+        // Savatchani ochish/yopish elementlari
         const cartContainer = document.getElementById('cart');
         const openCartBtn = document.getElementById('cart-toggle-btn');
         const closeCartBtn = document.getElementById('cart-close-btn');
+
+        // YANGI: "Jarayonda" oynasi elementlari
+        const progressModal = document.getElementById('progress-modal');
+        const openProgressBtn = document.getElementById('progress-toggle-btn');
+        const closeProgressBtn = document.getElementById('progress-close-btn');
+        const progressContent = document.getElementById('progress-content');
+
 
         // 3. YUKLANISH ANIMATSIYASI (PRELOADER) LOGIKASI
         window.addEventListener('load', () => {
@@ -643,16 +707,13 @@
             productsToRender.forEach(product => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
-                // Dizayn sizning kodingizdagi uslubga moslashtirildi
+                // Dizayn yangilandi, nasiya narxi olib tashlandi
                 card.innerHTML = `
                     <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
                         <p class="product-description">${product.description}</p>
-                        <div class="price-container">
-                            <div class="product-price">${formatPrice(product.price)}</div>
-                            <div class="product-installment">${formatInstallment(product.installmentPrice)}</div>
-                        </div>
+                        <div class="product-price">${formatPrice(product.price)}</div>
                         <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
                             <i class="fas fa-shopping-basket"></i> Savatga Qo'shish
                         </button>
@@ -674,8 +735,7 @@
             }
             
             updateCart();
-            // Mahsulot qo'shilganda savatchani ochish
-            cartContainer.classList.add('open');
+            cartContainer.classList.add('open'); // Savatchani ochish
         }
 
         function updateCart() {
@@ -737,10 +797,11 @@
 
         function calculateTotals() {
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const installmentTotal = cart.reduce((sum, item) => sum + (item.installmentPrice * item.quantity), 0);
             
             totalPriceEl.textContent = formatPrice(total);
-            totalInstallmentEl.textContent = formatInstallment(installmentTotal);
+            // Nasiya hisobi olib tashlandi
+            
+            return total; // To'lov oynasi uchun jami summani qaytarish
         }
 
         // 6. MA'LUMOTLARNI SAQLASH (LocalStorage)
@@ -760,7 +821,7 @@
         function applyFiltersAndSearch() {
             const searchTerm = searchInput.value.toLowerCase();
             const maxPrice = parseFloat(priceFilterInput.value) || Infinity;
-            const onlyInstallment = installmentFilterCheckbox.checked;
+            // Nasiya filtri logikasi olib tashlandi
 
             let filteredProducts = allProducts;
 
@@ -771,34 +832,256 @@
                 );
             }
             filteredProducts = filteredProducts.filter(p => p.price <= maxPrice);
-            if (onlyInstallment) {
-                filteredProducts = filteredProducts.filter(p => p.installmentPrice > 0);
-            }
-
+            
+            // Nasiya filtri logikasi olib tashlandi
+            
             renderProducts(filteredProducts);
         }
 
         searchInput.addEventListener('input', applyFiltersAndSearch);
         priceFilterInput.addEventListener('input', applyFiltersAndSearch);
-        installmentFilterCheckbox.addEventListener('change', applyFiltersAndSearch);
+        // Nasiya filtri tinglovchisi olib tashlandi
 
-        // 8. MODAL OYNA (FRAME) FUNKSIYALARI
-        function openPaymentLink(url, title) {
+        // 8. YANGILANGAN TO'LOV OYNASI FUNKSIYALARI
+        
+        function openPaymentModal() {
             if (cart.length === 0) {
-                alert("Savat bo'sh! Avval mahsulot qo'shing.");
+                alert("Savatingiz bo'sh! Avval mahsulot qo'shing.");
                 return;
             }
-            modalTitle.textContent = title;
-            modalFrame.src = url;
-            modal.style.display = 'flex';
+            currentOrderTotalPrice = calculateTotals(); // Jami summani saqlab qo'yish
+            modalTitle.textContent = "To'lovni Amalga Oshirish";
+            renderPaymentStep1(currentOrderTotalPrice); // 1-bosqichni chizish
+            paymentModal.style.display = 'flex';
         }
 
-        function closePaymentLink() {
-            modal.style.display = 'none';
-            modalFrame.src = ''; 
+        function closePaymentModal() {
+            paymentModal.style.display = 'none';
+            paymentStepsContainer.innerHTML = ''; // Oynani tozalash
+            currentOrderTotalPrice = 0;
+            currentOrderPhone = '';
         }
 
-        // 9. YANGI: SAVATCHANI OCHISH/YOPISH
+        // 1-QADAM: To'lov ma'lumotlari va telefon raqami
+        function renderPaymentStep1(total) {
+            paymentStepsContainer.innerHTML = `
+                <h4>To'lov uchun ma'lumot</h4>
+                <div class="payment-info">
+                    <div class="total-payment">Jami: ${formatPrice(total)}</div>
+                    To'lovni quyidagi karta raqamiga o'tkazing:
+                    <strong>8600 0000 0000 0000</strong>
+                    </div>
+                <input type="tel" id="user-phone" class="payment-input" placeholder="Telefon raqamingiz (901234567)">
+                <button class="btn-modal" onclick="renderPaymentStep2()">
+                    <i class="fas fa-check"></i> To'lov qildim
+                </button>
+            `;
+        }
+
+        // 2-QADAM: Chekni yuklash
+        function renderPaymentStep2() {
+            const phoneInput = document.getElementById('user-phone');
+            const phone = phoneInput.value.trim();
+
+            // Telefon raqamini oddiy tekshirish
+            if (phone.length < 9 || !/^\d+$/.test(phone)) {
+                alert("Iltimos, telefon raqamingizni to'g'ri kiriting (faqat raqamlar, masalan: 901234567).");
+                phoneInput.focus();
+                return;
+            }
+
+            currentOrderPhone = phone; // Telefon raqamini saqlab qo'yish
+
+            paymentStepsContainer.innerHTML = `
+                <h4>To'lov chekini yuklang</h4>
+                <p style="font-size: 0.9rem; color: #555;">
+                    To'lovni tasdiqlash uchun o'tkazma chekining skrinshoti yoki rasmini yuklang.
+                </p>
+                <input type="file" id="receipt-upload" class="payment-input" accept="image/*">
+                <button class="btn-modal" id="send-btn" onclick="sendOrder()">
+                    <i class="fas fa-paper-plane"></i> Jo'natish
+                </button>
+            `;
+        }
+
+        // 3-QADAM: Ma'lumotlarni "jo'natish" va tasdiqlash
+        async function sendOrder() {
+            const receiptInput = document.getElementById('receipt-upload');
+            const sendBtn = document.getElementById('send-btn');
+            const receiptFile = receiptInput.files[0];
+
+            if (!receiptFile) {
+                alert("Iltimos, to'lov chekini tanlang.");
+                return;
+            }
+
+            // Tugmani bloklash (qayta bosishni oldini olish)
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Jo'natilmoqda...';
+
+            // ***** TELEGRAMGA JO'NATISH (SIMULYATSIYA) *****
+            // Haqiqiy jo'natish uchun sizga backend (server) kerak bo'ladi.
+            // Brauzerdan to'g'ridan-to'g'ri Telegramga fayl jo'natish xavfsizlik
+            // choralari tufayli imkonsiz.
+            
+            // 1. FormData obyekti yaratiladi
+            const formData = new FormData();
+            formData.append('chat_id', 'SIZNING_TELEGRAM_ID'); // O'ZINGIZNI IDni kiriting
+            formData.append('document', receiptFile); // Fayl
+            
+            // Buyurtma haqida matnli xabar tayyorlash
+            let caption = `🔔 Yangi Buyurtma!\n\n`;
+            caption += `📞 Telefon: +998${currentOrderPhone}\n`;
+            caption += `💰 Jami summa: ${formatPrice(currentOrderTotalPrice)}\n\n`;
+            caption += `🛒 Mahsulotlar:\n`;
+            cart.forEach(item => {
+                caption += `- ${item.name} (${item.quantity} dona)\n`;
+            });
+            formData.append('caption', caption);
+
+            // 2. SIMULYATSIYA: Haqiqiy serverga so'rov o'rniga 2 soniya kutamiz
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            /*
+            // ----- HAQIQIY KOD NAMUNASI (O'zingizni serveringizga moslang) -----
+            
+            // Masalan, sizning serveringiz (yoki serverless funksiya)
+            // Telegram Bot API bilan ishlash logikasiga ega bo'lishi kerak.
+            
+            try {
+                const response = await fetch('https://api.telegram.org/bot<SIZNING_BOT_TOKENINGIZ>/sendDocument', {
+                    method: 'POST',
+                    body: formData 
+                    // 'Content-Type' kerak emas, 'fetch' buni FormData uchun avtomatik qo'yadi
+                });
+
+                if (!response.ok) {
+                    throw new Error('Telegramga jo\'natishda xatolik yuz berdi.');
+                }
+                
+                // Agar jo'natish muvaffaqiyatli bo'lsa:
+                console.log("Buyurtma muvaffaqiyatli jo'natildi!");
+                
+            } catch (error) {
+                console.error(error);
+                alert("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
+                sendBtn.disabled = false; // Tugmani qayta ochish
+                sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Jo\'natish';
+                return; // Funksiyadan chiqish
+            }
+            
+            // -----------------------------------------------------------------
+            */
+
+            // Buyurtmani "Jarayonda" ro'yxatiga saqlash
+            saveOrderToProgress();
+
+            // Savatchani tozalash
+            cart = [];
+            updateCart();
+
+            // Tasdiqlash oynasini ko'rsatish
+            renderPaymentStep3();
+
+            // 3 soniyadan keyin oynani avtomatik yopish
+            setTimeout(() => {
+                closePaymentModal();
+            }, 4000);
+        }
+
+        // 4-QADAM: Muvaffaqiyatli tasdiqlash animatsiyasi
+        function renderPaymentStep3() {
+            paymentStepsContainer.innerHTML = `
+                <div class="success-animation">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                    <h4>Rahmat! Buyurtma qabul qilindi.</h4>
+                    <p>Javobni kuting. Tez orada operatorimiz siz bilan bog'lanadi.</p>
+                </div>
+            `;
+        }
+
+        // 9. "JARAYONDA" FUNKSIYALARI
+        function saveOrderToProgress() {
+            const orders = JSON.parse(localStorage.getItem('inProgressOrders')) || [];
+            
+            const newOrder = {
+                id: new Date().getTime(), // Unikal ID
+                date: new Date().toLocaleDateString('uz-UZ'),
+                items: cart,
+                total: currentOrderTotalPrice,
+                phone: currentOrderPhone
+            };
+
+            orders.push(newOrder);
+            localStorage.setItem('inProgressOrders', JSON.stringify(orders));
+        }
+
+        function renderProgressModal() {
+            const orders = JSON.parse(localStorage.getItem('inProgressOrders')) || [];
+
+            // 1. Professional sarlavha
+            progressContent.innerHTML = `
+                <div class="progress-header">
+                    <strong>Mahsulotlarni yetkazib berish</strong>
+                    <p>
+                        Buyurtmalaringiz holati va yetkazib berilishi siz ko'rsatgan telefon raqami orqali tasdiqlanadi.
+                        Agar yordam kerak bo'lsa, quyidagi raqamga qo'ng'iroq qiling:
+                    </p>
+                    <a href="tel:+998777042489">
+                        <i class="fas fa-phone-alt"></i> +998 (77) 704 24 89
+                    </a>
+                </div>
+            `;
+
+            // 2. Buyurtmalar ro'yxati
+            if (orders.length === 0) {
+                progressContent.innerHTML += '<p style="text-align: center; padding: 20px;">Sizda hozircha faol buyurtmalar mavjud emas.</p>';
+            } else {
+                orders.forEach(order => {
+                    const orderEl = document.createElement('div');
+                    orderEl.className = 'progress-order';
+
+                    let itemsHtml = '';
+                    order.items.forEach(item => {
+                        itemsHtml += `
+                            <div class="progress-order-item">
+                                <span>${item.name}</span>
+                                <strong>x ${item.quantity}</strong>
+                            </div>
+                        `;
+                    });
+
+                    orderEl.innerHTML = `
+                        <div class="progress-order-header">
+                            Buyurtma #${order.id.toString().slice(-5)} 
+                            <span class="status">(Jarayonda)</span>
+                        </div>
+                        ${itemsHtml}
+                        <div class="progress-order-total">
+                            Jami: ${formatPrice(order.total)}
+                        </div>
+                    `;
+                    progressContent.appendChild(orderEl);
+                });
+            }
+        }
+
+        // "Jarayonda" oynasini ochish
+        openProgressBtn.addEventListener('click', () => {
+            renderProgressModal(); // Ochishdan oldin kontentni yangilash
+            progressModal.style.display = 'flex';
+        });
+
+        // "Jarayonda" oynasini yopish
+        closeProgressBtn.addEventListener('click', () => {
+            progressModal.style.display = 'none';
+        });
+
+
+        // 10. SAVATCHANI OCHISH/YOPISH
         openCartBtn.addEventListener('click', () => {
             cartContainer.classList.add('open');
         });
@@ -807,7 +1090,20 @@
             cartContainer.classList.remove('open');
         });
 
-        // 10. ILK YUKLANISH
+        // 11. IKKALA MODALNI HAM TASODIFIY BOSISH BILAN YOPISH
+        [paymentModal, progressModal].forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    if (modal === paymentModal) {
+                        closePaymentModal(); // To'lov oynasini tozalash
+                    }
+                }
+            });
+        });
+
+
+        // 12. ILK YUKLANISH
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts(allProducts);
             loadCartFromLocalStorage();
