@@ -688,12 +688,14 @@
         const progressContent = document.getElementById('progress-content');
 
 
-        // 3. YUKLANISH ANIMATSIYASI (PRELOADER) LOGIKASI
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 5000); // 5 soniya
-        });
+ // 3. YUKLANISH ANIMATSIYASI (PRELOADER) LOGIKASI
+document.addEventListener('DOMContentLoaded', () => {
+    // Bu kod rasmlar va musiqani kutmaydi, sahifa tayyor bo'lishi bilan ishlaydi.
+    // 5 soniya CSS animatsiyasining to'liq ko'rinishi uchun qoldirildi.
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+    }, 5000); // 5 soniya
+});
 
         // 4. MAHSULOTLARNI SAHIFAGA CHIZISH
         function renderProducts(productsToRender) {
